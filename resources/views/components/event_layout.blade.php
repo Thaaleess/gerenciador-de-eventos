@@ -57,10 +57,12 @@
                         </form>
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Usuário
+                                @auth
+                                    {{ auth()->user()->name }}
+                                @endauth
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#">Sair</a></li>
+                                <li><a class="dropdown-item" href="{{ route('auth.logout') }}">Sair</a></li>
                             </ul>
                         </div>
                     </div>
@@ -69,7 +71,10 @@
 
         <div class="main">
             <div class="sidebar">
-                <h3>Bem vindo, Usuário</h3>
+                <h3>Bem vindo,
+                    @auth
+                        {{ auth()->user()->name }}
+                    @endauth</h3>
                 <div class="list-group">
                     <a href="{{ route('events.index')}}" class="list-group-item list-group-item-action active" aria-current="true">
                         <i class="bi bi-house"></i> Home</li>
